@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fire Weather Index FWI Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        form {
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>FWI Prediction</h1>
+
+    <form action="{{url_for('predict_data')}}" method="POST">
+
+        <!-- predict_datapoint is fn we calling fn from file application.py -->
+
+        <label for="temperature">Temperature (°C):</label>
+        <input type="number" id="temperature" name="temperature" step="0.1" required>
+
+        <label for="rh">Relative Humidity (%):</label>
+        <input type="number" id="rh" name="rh" step="0.1" required>
+
+        <label for="ws">Wind Speed (km/h):</label>
+        <input type="number" id="ws" name="ws" step="0.1" required>
+
+        <label for="rain">Rain (mm):</label>
+        <input type="number" id="rain" name="rain" step="0.1" required>
+
+        <label for="ffmc">FFMC:</label>
+        <input type="number" id="ffmc" name="ffmc" step="0.1" required>
+
+        <label for="dmc">DMC:</label>
+        <input type="number" id="dmc" name="dmc" step="0.1" required>
+
+        <label for="isi">ISI:</label>
+        <input type="number" id="isi" name="isi" step="0.1" required>
+
+        <label for="classes">Classes:</label>
+        <input type="text" id="classes" name="classes" required>
+
+        <label for="region">Region:</label>
+        <input type="text" id="region" name="region" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <h2> The FWI Prediction is = {{results}}</h2>
+
+</body>
+</html>
